@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  
+
+  <!-- Start meta -->
+  <th:block th:include="~{fragments/meta}"></th:block>
+  <!-- End meta -->
+
+  <title>Sleek - Admin Dashboard Template</title>
+
+  
+  <!-- Start css styles -->
+  <th:block th:include="~{fragments/styles}"></th:block>
+  <!-- End css styles -->
+
+</head>
+
+
+<body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
+
+  <script>
+    NProgress.configure({ showSpinner: false });
+    NProgress.start();
+  </script>
+
+
+
+  <div class="wrapper">
+
+
+    <!-- Start Aside -->
+    <div th:replace="~{fragments/aside}"></div>
+    <!-- End Aside -->
+
+
+    <div class="page-wrapper">
+
+
+      <!-- Start header -->
+      <div th:replace="~{fragments/header}"></div>
+      <!-- End header -->
+
+
+      <div class="content-wrapper">
+
+        <div class="content">
+          
+          <div layout:fragment="content">
+            <!-- 
+              Content Rendering
+            -->
+          </div>
+
+        </div>
+
+
+        <!-- Start settinggs -->
+        <div th:replace="~{fragments/settings}"></div>
+        <!-- End settinggs -->
+
+
+      </div>
+
+
+      <!-- Start footer -->
+      <div th:replace="~{fragments/footer}"></div>
+      <!-- End footer -->
+
+
+    </div>
+  </div>
+
+  
+  <!-- Start script -->
+  <th:block th:include="~{fragments/scripts}"></th:block>
+  <!-- End script -->
+
+
+</body>
+
+</html>
