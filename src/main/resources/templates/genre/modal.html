@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div th:fragment="modalDelete" class="modal fade show" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDeleteLabel" aria-modal="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Close</button>
+                    <a id="btnConfirmDelete" href="/genre/delete/" type="button" class="btn btn-primary btn-pill text-white">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

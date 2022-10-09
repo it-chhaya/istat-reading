@@ -33,13 +33,27 @@ public class GenreController {
     }
 
 
-    @PostMapping("/add-new-genre")
+    @GetMapping("/genre/form")
+    String requestGenreFormView(Genre genre, ModelMap modelMap) {
+        modelMap.addAttribute("genre", genre);
+        return "genre/form";
+    }
+
+
+    @PostMapping("/genre/save")
     String doAddNewGenre(Genre genre) {
 
         log.info("Genre = {}", genre);
 
         genreServiceImpl.addNew(genre);
 
+        return "redirect:/genre";
+    }
+
+
+    @PostMapping("/genre/edit/{id}")
+    String doEditGenre(@PathVariable Integer id, Genre genre) {
+        genreServiceImpl.updateById(id, genre);
         return "redirect:/genre";
     }
 
@@ -51,9 +65,16 @@ public class GenreController {
         Genre genre = genreServiceImpl.findById(id);
 
         modelMap.addAttribute("genre", genre);
+        modelMap.addAttribute("isEdit", true);
 
-        return "genre/edit";
+        return "genre/form";
 
+    }
+
+    @GetMapping("/genre/delete/{id}")
+    String doDeleteAction(@PathVariable Integer id) {
+        genreServiceImpl.deleteById(id);
+        return "redirect:/genre";
     }
 
 }

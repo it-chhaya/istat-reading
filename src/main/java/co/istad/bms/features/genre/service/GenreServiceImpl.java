@@ -64,8 +64,8 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     public Genre updateById(Integer id, Genre genre) {
-        // TODO Auto-generated method stub
-        return null;
+        genreRepository.update(id, genre);
+        return findById(id);
     }
 
 }

@@ -10,65 +10,20 @@
 
 <body>
     <div layout:fragment="content">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-default">
-                    <div class="card-header card-header-border-bottom">
-                        <h2>Form</h2>
-                    </div>
-                    <div class="card-body">
-                        <form th:action="@{/add-new-genre}" method="post" th:object="${genre}">
-                            <div class="form-group">
-                                <label for="title">title</label>
-                                <input th:field="*{title}" type="text" class="form-control"
-                                    placeholder="Enter Title">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">description</label>
-                                <input th:field="*{description}" type="text" class="form-control"
-                                    placeholder="Enter description">
-                            </div>
-                            <button type="submit" class="mb-1 btn btn-primary">Add New</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header card-header-border-bottom">
-                        <h2>Genres</h2>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-hover ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Icon</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="genre : ${genres}" th:object="${genre}">
-                                    <td th:text="*{title}" scope="row">Title</td>
-                                    <td th:text="*{description}">Description</td>
-                                    <td th:text="*{icon}">Icon</td>
-                                    <td>
-                                        <a th:href="@{/genre/edit/{id}(id=*{id})}" type="button" class="mb-1 btn btn-sm btn-primary text-white">
-                                            <i class=" mdi mdi-folder-edit"></i></a>
-                                        <button type="button" class="mb-1 btn btn-sm btn-danger">
-                                            <i class=" mdi mdi-close-circle-outline"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        <!-- Include Table -->
+        <div th:replace="~{genre/table}"></div>
 
+        <!-- Include Modal -->
+        <div th:replace="~{genre/modal :: modalDelete}"></div>
 
     </div>
+
+    <!-- Link Scripts -->
+    <th:block layout:fragment="scripts">
+        <script src="/scripts/genre/listener.js"></script>
+    </th:block>
+
 </body>
 
 </html>
