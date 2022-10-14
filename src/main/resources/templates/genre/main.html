@@ -12,7 +12,11 @@
     <div layout:fragment="content">
         
         <!-- Include Table -->
-        <div th:replace="~{genre/table}"></div>
+        <!-- <div th:replace="~{genre/table}"></div> -->
+        <section id="table">
+            <!-- Template of table 
+            will be rendered here -->
+        </section>
 
         <!-- Include Modal -->
         <div th:replace="~{genre/modal :: modalDelete}"></div>
@@ -21,6 +25,8 @@
 
     <!-- Link Scripts -->
     <th:block layout:fragment="scripts">
+        <script src="/scripts/genre/func.js"></script>
+        <script src="/scripts/genre/main.js"></script>
         <script src="/scripts/genre/listener.js"></script>
     </th:block>
 

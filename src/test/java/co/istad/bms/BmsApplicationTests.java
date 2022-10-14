@@ -20,9 +20,16 @@ class BmsApplicationTests {
 	@Test
 	void selectGenres() {
 		List<Genre> genres = genreRepository.select();
-		Genre genre = genreRepository.selectById(1);
-		log.info("Genres ={}", genres);
-		log.info("Genre = {}", genre);
+		genres.forEach((genre)->log.info("Genres ={}", genre));
+	}
+
+	@Test
+	void updateGenreById() {
+		Genre genre = new Genre();
+		genre.setTitle("Update title");
+		genre.setDescription("Update desc");
+
+		genreRepository.update(12, genre);
 	}
 
 }

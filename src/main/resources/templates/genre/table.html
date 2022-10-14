@@ -8,17 +8,19 @@
                 <table class="table table-hover ">
                     <thead>
                         <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Icon</th>
-                            <th scope="col">Action</th>
+                            <th style="width: 30%;" scope="col">Title</th>
+                            <th style="width: 30%;"scope="col">Description</th>
+                            <th style="width: 20%;"scope="col">Icon</th>
+                            <th style="width: 20%;"scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="genre : ${genres}" th:object="${genre}">
                             <td th:text="*{title}" scope="row">Title</td>
                             <td th:text="*{description}">Description</td>
-                            <td th:text="*{icon}">Icon</td>
+                            <td>
+                                <img class="w-50" th:src="*{icon.uuid}" alt="genre icon">
+                            </td>
                             <td>
                                 <a th:href="@{/genre/edit/{id}(id=*{id})}" type="button" class="mb-1 btn btn-sm btn-primary text-white">
                                     <i class=" mdi mdi-folder-edit"></i></a>

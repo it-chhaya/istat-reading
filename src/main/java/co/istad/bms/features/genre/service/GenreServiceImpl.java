@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import co.istad.bms.features.genre.model.Genre;
 import co.istad.bms.features.genre.repository.GenreRepository;
+import co.istad.bms.features.upload.model.Image;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -50,8 +51,11 @@ public class GenreServiceImpl implements GenreService {
     @Override
     public Genre addNew(Genre genre) {
         
+        Image image = new Image();
+        image.setId(1);
+
         // Set system data
-        genre.setIcon(1);
+        genre.setIcon(image);
         genre.setIsEnabled(true);
 
         genreRepository.insert(genre);

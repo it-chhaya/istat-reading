@@ -15,10 +15,9 @@ public class GenreProvider {
             if (!genre.getTitle().isBlank()) {
                 VALUES("title", "#{genre.title}");
             }
-
             
             VALUES("description", "#{genre.description}");
-            VALUES("icon", "#{genre.icon}");
+            VALUES("icon", "#{genre.icon.id}");
             VALUES("is_enabled", "#{genre.isEnabled}");
         }}.toString();
     }

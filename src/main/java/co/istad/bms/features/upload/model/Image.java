@@ -1,23 +1,20 @@
-package co.istad.bms.features.genre.model;
+package co.istad.bms.features.upload.model;
 
-import co.istad.bms.features.upload.model.Image;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
 @Getter
-@ToString
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Genre {
-    
+@ToString
+public class Image {
     private Integer id;
-    private String title;
-    private String description;
-    private Image icon;
+    private String uuid;
+    private String extension;
+    private Double size;
     private Boolean isEnabled;
-
 }

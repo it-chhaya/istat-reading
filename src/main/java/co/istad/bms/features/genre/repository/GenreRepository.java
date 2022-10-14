@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
@@ -17,6 +18,7 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import org.springframework.stereotype.Repository;
 
 import co.istad.bms.features.genre.model.Genre;
+import co.istad.bms.features.upload.model.Image;
 
 @Repository
 public interface GenreRepository {
@@ -38,7 +40,9 @@ public interface GenreRepository {
     // Inline SQL
     @SelectProvider(type = GenreProvider.class, method = "buildSelectSql")
     @Results(id = "genreResultMapper", value = {
-        @Result(column = "is_enabled", property = "isEnabled")
+        @Result(column = "id", property = "id"),
+        @Result(column = "is_enabled", property = "isEnabled"),
+        @Result(column = "icon", property = "icon", one = @One(select = "selectImageById"))
     })
     List<Genre> select();
 
@@ -46,6 +50,13 @@ public interface GenreRepository {
     @SelectProvider(type = GenreProvider.class, method = "buildSelectByIdSql")
     @ResultMap(value = "genreResultMapper")
     Genre selectById(@Param("id") Integer id);
+
+
+
+    // Mapping Relationship
+    @Select("SELECT * FROM images WHERE id = #{id}")
+    @Result(column = "is_enabled", property = "isEnabled")
+    Image selectImageById(@Param("id") Integer id);
 
 
 }
